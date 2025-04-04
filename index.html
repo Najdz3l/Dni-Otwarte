@@ -7,13 +7,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@1,100..900&display=swap" rel="stylesheet">
+    <script src="toast.js"></script>
 </head>
 
 <script>
     function copy(id) {
-    let text = document.getElementById(id).innerText; // Pobiera tekst z diva
-        navigator.clipboard.writeText(text)
-}
+        let text = document.getElementById(id).innerText;
+        navigator.clipboard.writeText(text);
+        toast("Skopiowano kod do schowka");
+    }
 </script>
 
 <body>
@@ -213,7 +215,7 @@
             <li>Teraz będziemy wyświetlać w konsoli tylko przyciski, które są wymienione w naszym obiekcie.</li>
             <div class="code_bg">
                 <button onclick='copy("js5")' style="display: block; margin-right: 20px;">Copy</button>
-<code id ="js5"><span class="attr">window</span>.<span class="mark-css">addEventListener</span>(<span class="str">"keydown"</span>, (<span class="attr">event</span>) => {
+<code id="js5"><span class="attr">window</span>.<span class="mark-css">addEventListener</span>(<span class="str">"keydown"</span>, (<span class="attr">event</span>) => {
     <span class="if">if</span> (<span class="var">inputKeys</span>.<span class="mark-css">hasOwnProperty</span>(<span class="attr">event</span>.<span class="mark">key</span>)) {
         <span class="attr">console</span>.<span class="mark-css">log</span>(<span class="str">"Nacisnąłeś: "</span> + <span class="attr">event</span>.<span class="mark">key</span>);
     }
@@ -223,7 +225,7 @@
             <li>Sprawdzimy teraz które przyciski puszczamy.            </li>
             <div class="code_bg">
                 <button onclick='copy("js6")' style="display: block; margin-right: 20px;">Copy</button>
-<code id ="js6"><span class="attr">window</span>.<span class="mark-css">addEventListener</span>(<span class="str">"keyup"</span>, (<span class="attr">event</span>) => {
+<code id="js6"><span class="attr">window</span>.<span class="mark-css">addEventListener</span>(<span class="str">"keyup"</span>, (<span class="attr">event</span>) => {
     <span class="if">if</span> (<span class="var">inputKeys</span>.<span class="mark-css">hasOwnProperty</span>(<span class="attr">event</span>.<span class="mark">key</span>)) {
         <span class="attr">console</span>.<span class="mark-css">log</span>(<span class="str">"Puściłeś: "</span> + <span class="attr">event</span>.<span class="mark">key</span>);
     }
@@ -233,7 +235,7 @@
             <li>Oznaczymy teraz, które przyciski są aktualnie naciśnięte poprzez zmienienie wartości `false` na `true` w naszym obiekcie</li>
             <div class="code_bg">
                 <button onclick='copy("js7")' style="display: block; margin-right: 20px;">Copy</button>
-<code id ="js7 "><span class="attr">window</span>.<span class="mark-css">addEventListener</span>(<span class="str">"keydown"</span>, (<span class="attr">event</span>) => {
+<code id="js7"><span class="attr">window</span>.<span class="mark-css">addEventListener</span>(<span class="str">"keydown"</span>, (<span class="attr">event</span>) => {
     <span class="if">if</span> (<span class="var">inputKeys</span>.<span class="mark-css">hasOwnProperty</span>(<span class="attr">event</span>.<span class="mark">key</span>)) {
         <span class="attr">console</span>.<span class="mark-css">log</span>(<span class="str">"Nacisnąłeś: "</span> + <span class="attr">event</span>.<span class="mark">key</span>);
         <span class="var">inputKeys</span>[<span class="attr">event</span>.<span class="mark">key</span>] = <span class="mark">true</span>;
@@ -244,7 +246,7 @@
             <li>Gdy puścimy musimy ponownie ustawić wartość na `false`</li>
             <div class="code_bg">
                 <button onclick='copy("js8")' style="display: block; margin-right: 20px;">Copy</button>
-<code id ="js8 "><span class="attr">window</span>.<span class="mark-css">addEventListener</span>(<span class="str">"keyup"</span>, (<span class="attr">event</span>) => {
+<code id="js8"><span class="attr">window</span>.<span class="mark-css">addEventListener</span>(<span class="str">"keyup"</span>, (<span class="attr">event</span>) => {
     <span class="if">if</span> (<span class="var">inputKeys</span>.<span class="mark-css">hasOwnProperty</span>(<span class="attr">event</span>.<span class="mark">key</span>)) {
         <span class="attr">console</span>.<span class="mark-css">log</span>(<span class="str">"Puściłeś: "</span> + <span class="attr">event</span>.<span class="mark">key</span>);
         <span class="var">inputKeys</span>[<span class="attr">event</span>.<span class="mark">key</span>] = <span class="mark">false</span>;
@@ -255,7 +257,7 @@
             <li>Pobierzemy obrazek gracza aby móc nim poruszyć oraz ustalimy szybkość z jaką postać będzie się poruszać.</li>
             <div class="code_bg">
                 <button onclick='copy("js9")' style="display: block; margin-right: 20px;">Copy</button>
-<code id ="js9"><span class="mark">const</span> <span class="var">playerImage</span> = <span class="attr">document</span>.<span class="mark-css">querySelector</span>(<span class="str">"player"</span>);
+<code id="js9"><span class="mark">const</span> <span class="var">playerImage</span> = <span class="attr">document</span>.<span class="mark-css">querySelector</span>(<span class="str">"player"</span>);
 <span class="mark">const</span> <span class="var">playerMoveSpeed</span> = <span class="val">2</span>;</code>
             </div>
             <!-- 8 -->
@@ -268,12 +270,12 @@
 <span class="if">if</span> (<span class="var">inputKeys</span>.<span class="attr">ArrowDown</span>) <span class="attr">playerImage</span>.<span class="attr">style</span>.<span class="attr">top</span> = `${<span class="attr">playerImage.</span><span class="attr">offsetTop</span> + <span class="attr">playerMoveSpeed</span>}px`;
 <span class="if">if</span> (<span class="var">inputKeys</span>.<span class="attr">ArrowLeft</span>) <span class="attr">playerImage</span>.<span class="attr">style</span>.<span class="attr">left</span> = `${<span class="attr">playerImage.</span><span class="attr">offsetLeft</span> - <span class="attr">playerMoveSpeed</span>}px`;
   };</code>
-            </div>  
+            </div>
             <!-- 9 -->
             <li>Będziemy ją wywoływać w nasłuchiwaniu naciśnięcia</li>
             <div class="code_bg">
                 <button onclick='copy("js11")' style="display: block; margin-right: 20px;">Copy</button>
-<code id ="js11 "><span class="attr">window</span>.<span class="mark-css">addEventListener</span>(<span class="str">"keydown"</span>, (<span class="attr">event</span>) => {
+<code id="js11"><span class="attr">window</span>.<span class="mark-css">addEventListener</span>(<span class="str">"keydown"</span>, (<span class="attr">event</span>) => {
     <span class="if">if</span> (<span class="var">inputKeys</span>.<span class="mark-css">hasOwnProperty</span>(<span class="attr">event</span>.<span class="mark">key</span>)) {
         <span class="comm">// Reszta kodu</span>
         <span class="mark-css">handlePlayerMovement</span>();
@@ -288,7 +290,7 @@
             </li>
             <div class="code_bg">
                 <button onclick='copy("js12")' style="display: block; margin-right: 20px;">Copy</button>
-<code id ="js12 "><span class="mark">const</span> <span class="var">gameLoop</span> = () => {
+<code id="js12"><span class="mark">const</span> <span class="var">gameLoop</span> = () => {
     <span class="mark-css">handlePlayerMovement</span>();
     <span class="mark-css">requestAnimationFrame</span>(<span class="attr">gameLoop</span>);
 }</code>
@@ -300,25 +302,25 @@
             <li>Dodaj zmienną wskazującą, czy postać się porusza</li>
             <div class="code_bg">
                 <button onclick='copy("js7.1")' style="display: block; margin-right: 20px;">Copy</button>
-                <code id ="js7.1 "><span class="mark">let</span> <span class="attr">isPlayerMoving</span> = <span class="mark">false</span>;</code>
+                <code id="js7.1"><span class="mark">let</span> <span class="attr">isPlayerMoving</span> = <span class="mark">false</span>;</code>
             </div>
             <!-- 2 -->
             <li>Utwórz tablicę przechowującą aktualnie wciśnięte przyciski</li>
             <div class="code_bg">
                 <button onclick='copy("js7.2")' style="display: block; margin-right: 20px;">Copy</button>
-                <code id ="js7.2 "><span class="mark">let</span> <span class="attr">clickedButtons</span> = [];</code>
+                <code id="js7.2"><span class="mark">let</span> <span class="attr">clickedButtons</span> = [];</code>
             </div>
             <!-- 3 -->
             <li>Zdefiniuj tablicę z grafikami postaci skierowanej w cztery strony</li>
             <div class="code_bg">
                 <button onclick='copy("js7.3")' style="display: block; margin-right: 20px;">Copy</button>
-                <code id ="js7.3 "><span class="mark">const</span> <span class="var">playerSprites</span> = [
+                <code id="js7.3"><span class="mark">const</span> <span class="var">playerSprites</span> = [
     <span class="str">"./images/playerUp.png"</span>,
     <span class="str">"./images/playerRight.png"</span>,
     <span class="str">"./images/playerDown.png"</span>,
     <span class="str">"./images/playerLeft.png"</span>,
 ];</code>
-            </div>  
+            </div>
             <!-- 4 -->
             <li>Sprawdź, czy wciśnięty przycisk już znajduje się w tablicy <i>clickedButtons</i>. Jeśli tak, pomiń dalsze akcje.</li>
             <div class="code_bg">
@@ -336,7 +338,7 @@
             <li>Po puszczeniu przycisku – ustaw jego wartość w inputKeys na false, usuń go z clickedButtons, a jeśli tablica jest pusta, zatrzymaj ruch:</li>
             <div class="code_bg">
                 <button onclick='copy("js7.5")' style="display: block; margin-right: 20px;">Copy</button>
-<code id ="js7.5 "><span class="attr">window</span>.<span class="mark-css">addEventListener</span>(<span class="str">"keyup"</span>, (<span class="attr">event</span>) => {
+<code id="js7.5"><span class="attr">window</span>.<span class="mark-css">addEventListener</span>(<span class="str">"keyup"</span>, (<span class="attr">event</span>) => {
     <span class="if">if</span> (<span class="var">inputKeys</span>.<span class="mark-css">hasOwnProperty</span>(<span class="attr">event</span>.<span class="mark">key</span>)) {
         <span class="var">inputKeys</span>[<span class="attr">event</span>.<span class="mark">key</span>] = <span class="mark">false</span>;
         <span class="var">clickedButtons</span> = <span class="var">clickedButtons</span>.<span class="mark-css">filter</span>((<span class="var">key</span>) => <span class="var">key</span> !== <span class="attr">event</span>.<span class="mark">key</span>);
@@ -354,13 +356,13 @@
             </li>
             <div class="code_bg">
                 <button onclick='copy("js7.6")' style="display: block; margin-right: 20px;">Copy</button>
-<code id ="js7.6 "><span class="mark">let</span> <span class="var">image</span> = <span class="attr">playerSprites</span>[<span class="val">2</span>];</code>
+<code id="js7.6"><span class="mark">let</span> <span class="var">image</span> = <span class="attr">playerSprites</span>[<span class="val">2</span>];</code>
             </div>
             <!-- 7 -->
             <li>Na podstawie ostatnio wciśniętego klawisza, zmień obrazek postaci na odpowiedni</li>
             <div class="code_bg">
                 <button onclick='copy("js7.7")' style="display: block; margin-right: 20px;">Copy</button>
-<code id ="js7.7 "><span class="mark">const</span> <span class="var">updatePlayerDirection</span> = () => {
+<code id="js7.7"><span class="mark">const</span> <span class="var">updatePlayerDirection</span> = () => {
     <span class="mark">let</span> <span class="var">lastClickedButton</span> = <span class="var">clickedButtons</span>[<span class="var">clickedButtons</span>.<span class="mark-css">length</span> - <span class="val">1</span>];
     <span class="mark">let</span> <span class="var">image</span> = <span class="var">playerSprites</span>[<span class="val">2</span>];
 
@@ -383,7 +385,7 @@
 
     <span class="var">playerImage</span>.<span class="attr">style</span>.<span class="attr">backgroundImage</span> = <span class="mark-css">`url(${image})`</span>;
 };</code>
-            </div>  
+            </div>
             <!-- 8 -->
             <li>Aktualizacja kierunku podczas ruchu. <br>
             W funkcji handlePlayerMovement wywołujemy updatePlayerDirection, aby postać obracała się tylko wtedy, gdy się porusza. <br>
@@ -391,7 +393,7 @@
             Jeśli tak – wywołaj funkcję updatePlayerDirection</li>
             <div class="code_bg">
                 <button onclick='copy("js7.8")' style="display: block; margin-right: 20px;">Copy</button>
-<code id ="js7.8 "><span class="mark">const</span> <span class="var">handlePlayerMovement</span> = () => {
+<code id="js7.8"><span class="mark">const</span> <span class="var">handlePlayerMovement</span> = () => {
     <span class="comm">// Reszta kodu odpowiedzialna za ruch...</span>
 
     <span class="if">if</span> (<span class="var">isPlayerMoving</span>) {
