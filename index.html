@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@1,100..900&display=swap" rel="stylesheet">
+</head>
+
+<script>
+    function copy(id) {
+    let text = document.getElementById(id).innerText; // Pobiera tekst z diva
+        navigator.clipboard.writeText(text)
+}
+</script>
+
+<body>
+    <h1>Jak stworzyć skrypt do poruszania postacią na stronie internetowej – krok po kroku</h1>
+
+    <h2>Wprowadzenie</h2> 
+        <p>W tym poradniku nauczysz się, jak stworzyć prosty skrypt w JavaScript, który pozwoli poruszać postacią na stronie internetowej za pomocą klawiatury. Będziemy pracować na gotowej grafice gracza w formie zdjęcia, a cały projekt zbudujemy krok po kroku, wykorzystując HTML, CSS i JavaScript.</p>
+
+    <h2>Wymagania</h2>
+        <div>
+            <ul class="tics">
+                <li>
+                    Podstawowa znajomość HTML, CSS i JavaScript<br>
+                    <i>Nie musisz być ekspertem – wystarczy podstawowa wiedza, a resztę wyjaśnimy krok po kroku!</i>
+                </li>
+                <li>Przeglądarka internetowa do testowania kodu</li>
+                <li>
+                    Edytor tekstowy (np. VS Code, Notepad++, Sublime Text) <br>
+                    <i>Ja będę używał VS Code jako edytora kodu, ale możesz wybrać narzędzie, które najbardziej Ci odpowiada.</i>
+
+                </li>
+                <li>
+                    Gotowa grafika postaci w formacie PNG <br>
+                    <i>
+                        Wszystkie użyte grafiki są podlinkowane w poradniku.
+                    </i>
+
+                </li>
+            </ul>
+        </div>
+
+    <h2>Krok 1. Utworzenie folderu projektu</h2>
+        <p>
+            Pierwszym krokiem jest przygotowanie folderu, w którym będziesz trzymał wszystkie pliki związane z projektem. Dzięki temu będziesz mieć porządek i łatwiej będzie Ci zarządzać swoimi plikami.
+        </p>
+        <ol>
+            <li>Stwórz folder projektu na swoim komputerze.</li>
+            <p>
+                Na przykład: Projekt-Postać. Aby to zrobić:
+            </p>
+            <ul>
+                <li>Na Windowsie kliknij prawym przyciskiem myszy w odpowiednim miejscu na dysku i wybierz Nowy > Folder.</li>
+                <li>Nazwij folder np. Projekt-Postać.</li>
+            </ul>
+            <li>Stwórz strukturę folderów</li>
+            <p>	Aby łatwiej zarządzać plikami, stworzymy dodatkowy folder na zdjęcia:</p>
+            <ul>
+                <li>/ - folder główny przechowujący reszte naszych plików</li>
+                <li>images/ – tutaj będą przechowywane wszystkie grafiki (np. grafika postaci).</li>
+            </ul>
+        </ol>
+            
+            
+    <h2>Krok 2. Pobranie grafiki postaci</h2>
+        <p>Aby projekt działał, będziesz potrzebować grafiki postaci, którą będziesz poruszać na stronie.</p>
+        <ol>
+            <li>
+                Pobierz grafikę<br>
+            </li>
+                <a href="https://drive.google.com/drive/folders/1Xgwg1g9Dm3oAh4BD7Hvq0mk--BS6-7vM?usp=sharing">https://drive.google.com/drive/folders/1Xgwg1g9Dm3oAh4BD7Hvq0mk--BS6-7vM?usp=sharing</a>
+            <li>Przenieś grafikę do folderu images</li>
+                Skopiuj lub przenieś obrazek postaci do folderu images/ w folderze projektu (Projekt-Postać/images).
+        </ol>
+
+    <h2>Krok 3. Utworzenie plików HTML, CSS oraz JavaScript</h2>
+        <p>Teraz, gdy masz już foldery i grafikę, czas na stworzenie plików do Twojego projektu</p>
+        <ol>
+            <li>Utwórz plik HTML</li><ul>
+                <li>W folderze Projekt-Postać, kliknij prawym przyciskiem myszy i wybierz Nowy > Dokument tekstowy.</li>
+                <li>Nazwij plik <i>index.html</i>.</li>
+            </ul>
+            <li>Utwórz plik CSS</li><ul>
+                <li>W tym samym folderze, utwórz nowy plik tekstowy i nazwij go <i>style.css</i>.</li>
+            </ul>
+            <li>Utwórz plik JavaScript</li><ul>
+                <li>Stwórz kolejny plik tekstowy i nazwij go <i>script.js</i>.</li>
+            </ul>
+        </ol>
+
+    <h2>Krok 4. Przygotowanie zawartości plików HTML i CSS</h2>
+        <p>Okej, teraz przejdźmy do uzupełnienia pliku HTML i CSS w taki sposób, aby były przygotowane na dodanie skryptu JavaScript, który umożliwi poruszanie postacią. Skupimy się na ustawieniu odpowiedniej struktury HTML i stylów CSS, które zapewnią wygodne miejsce do działania skryptu.</p>
+        <ol>
+            <li>Uzupełnienie pliku <i>index.html</i></li>
+            <p>W pliku HTML dodamy odpowiednią strukturę, aby umieścić 	grafikę postaci oraz zapewnić miejsce do jej ruchu.</p>
+            <p></p>
+        
+        <!-- Plik html -->
+        <div class="code_bg">
+        <button onclick='copy("html")' style="display: block; margin-right: 20px;">Copy</button>
+        <code id="html">&lt<span class="mark">!<span class="mark">DOCTYPE</span> <span class="attr">html</span></span>&gt
+&lt<span class="mark">html <span class=attr>lang</span>=<span class="str">"en"</span></span>&gt
+&lt<span class="mark">head</span>&gt
+    &lt<span class="mark">meta</span> <span class=attr>charset</span>=<span class="str">"UTF-8"</span>/</span>&gt
+    &lt<span class="mark">meta</span> <span class=attr>name</span>=<span class="str">"viewport"</span> content=<span class="str">"width=device-width, initial-scale=1.0"</span> /</span>&gt
+    &lt<span class="mark">title</span>&gtProjekt-Postać&lt/<span class="mark">title</span>&gt
+    <span class="comm">&lt!-- Podłączamy plik CSS | Arkusz stylów --&gt</span>
+    &lt<span class="mark">link <span class=attr>name</span>=<span class="str">"stylesheet"</span> <span class=attr>href</span></span>=<span class="str">"style.css"</span>/&gt
+&lt<span class="mark">/head</span>&gt
+&lt<span class="mark">body</span>&gt
+    <span class="comm">&lt!-- Element(gracz), którym będziemy się poruszać --&gt</span>
+    &lt<span class="mark">div <span class=attr>id</span>=<span class="str">"player"</span></span>&gt&lt/<span class="mark">div</span>&gt
+    <span class="comm">&lt!-- Podłączenie skryptu JavaScript do pliku HTML --&gt</span>
+    &lt<span class="mark">script <span class=attr>id</span>=<span class="str">"index.js"</span></span>&gt&lt/<span class="mark">script</span>&gt
+&lt<span class="mark">/body</span>&gt
+&lt<span class="mark">/html</span>&gt </code>
+        </div>
+        <li>Uzupełnienie pliku style.css</li>
+            <p>W pliku CSS musimy przygotować odpowiedni wygląd strony, a także ustawić obszar, w którym będzie się poruszać postać.</p>
+
+        <!-- Plik CSS -->
+        <div class="code_bg">
+            <button onclick='copy("css")' style="display: block; margin-right: 20px;">Copy</button>
+        <code id="css"><span class="comm">/* Resetowanie marginesów i paddingu */</span>
+<span class="mark-css">body</span> {
+    <span class="attr">margin</span>: <span class="val">0</span>;
+    <span class="attr">padding</span>: <span class="val">0</span>;
+
+    <span class="comm">/* Ustawienie tła na obrazek, który będzie zawsze w centrum i przyklejony do okna */</span>
+    <span class="attr">height</span>: <span class="val">100svh</span>;
+    <span class="attr">width</span>: <span class="val">100svw</span>;
+    <span class="attr">background</span>: url(<span class="str">"./images/background.png"</span>) <span class="str">no-repeat center center fixed</span>;
+    <span class="attr">background-size</span>: <span class="str">cover</span>; <span class="comm">/* Obrazek wypełnia tło */</span>
+}
+
+<span class="comm">/* Styl postaci */</span>
+<span class="mark-css">#player</span> {
+    <span class="comm">/* Ustawienie tła postaci */</span>
+    <span class="attr">background-image</span>: url(<span class="str">"./images/playerDown.png"</span>);
+
+    <span class="comm">/* Pozycjonowanie postaci na środku ekranu */</span>
+    <span class="attr">position</span>: <span class="str">absolute</span>;
+    <span class="attr">left</span>: <span class="val">50%</span>;
+    <span class="attr">top</span>: <span class="val">50%</span>;
+    <span class="attr">transform</span>: translate(<span class="val">-50%</span>, <span class="val">-50%</span>);
+
+    <span class="comm">/* Rozmiar postaci */</span>
+    <span class="attr">width</span>: <span class="val">48px</span>;
+    <span class="attr">height</span>: <span class="val">68px</span>;
+}</code>
+        </div>
+
+        </ol>
+
+        <h2>Krok 5. Początek skryptu JavaScript</h2>
+            <p>Skoro mamy już wystylizowaną stronę oraz umieszczoną postać na ekranie, możemy zacząć dodawać interaktywność do naszej strony.</p>
+        
+            <ol>
+                <li>Sprawdzenie skryptu</li>
+                <ul>
+                    <li>Wyświetlimy w konsoli komunikat aby sprawdzyć czy skrypt został poprawnie podłączony</li>
+                </ul>
+            </ol>
+            <div class="code_bg">
+                <button onclick='copy("js")' style="display: block; margin-right: 20px;">Copy</button>
+                <code id="js"><span class="attr">console</span>.<span class="mark-css">log</span>(<span class="str">"Skrypt działa!"</span>);<br></code>
+            </div>
+            <p>Jak uruchomić konsolę w przeglądarce? W ten sposób:</p>
+            <img src="console.gif" alt="Gif pokazujący uruchomienie narzędzi deweloperskich w przeglądarce">
+        
+        <h2>Krok 6. Poruszanie postaci</h2>
+        <ol>
+            <!-- 1 -->
+            <li>Pierw musimy sprawić aby strona wiedziała jaki klawisz naciskamy. Użyjemy do tego nasłuchiwania wydarzeń w JavaScript.</li>
+            <div class="code_bg">
+                <button onclick='copy("js2")' style="display: block; margin-right: 20px;">Copy</button>
+                <code id="js2"><span class="mark">window</span>.<span class="mark-css">addEventListener</span>(<span class="str">"keydown"</span>, <span class="mark">function</span>(<span class="attr">event</span>) {
+                    <span class="comm">// Kod który się wykona po wykryciu wydarzenia </span>
+                });</code>
+            </div>
+            <p>
+                Nazwą wydarzenia które będziemy nasłuchiwać jest "keydown", musimy również dopisać do funkcji parametr którym jest <b>event</b>.
+                Event zawiera wszystkie informacje o zarejestrowanym wydarzeniu. Wyświetlimy teraz w konsoli naciśnięty przycisk.
+            </p>
+            <div class="code_bg"> 
+                <button onclick='copy("js3")' style="display: block; margin-right: 20px;">Copy</button>
+                <code id="js3"><span class="mark">window</span>.<span class="mark-css">addEventListener</span>(<span class="str">"keydown"</span>, <span class="mark">function</span>(<span class="attr">event</span>) {
+                    <span class="comm">// Wyświetlenie w konsoli naciśniętego klawisza</span>
+                    <span class="attr">console</span>.<span class="mark-css">log</span>(<span class="str">"Nacisnąłeś: "</span> + <span class="attr">event</span>.<span class="mark">key</span>);
+                });</code>
+            </div>
+            
+            <p>Wyświetlanie się w konsoli przycisku poruszania</p>
+            <img src="console_buttons.png" alt="">
+            <!-- 2 -->
+            <li>Tworzymy obiekt z przyciskami, którymi będziemy się poruszać naszą postacią.</li>
+            <div class="code_bg">
+                <button onclick='copy("js4")' style="display: block; margin-right: 20px;">Copy</button>
+                <code id="js4"><span class="mark">const</span> <span class="var">inputKeys</span> = {
+    <span class="attr">ArrowUp</span>: <span class="mark">false</span>,
+    <span class="attr">ArrowRight</span>: <span class="mark">false</span>,
+    <span class="attr">ArrowDown</span>: <span class="mark">false</span>,
+    <span class="attr">ArrowLeft</span>: <span class="mark">false</span>,
+};</code>
+            </div>
+            <p>Obiekt z przyciskami powinien znajdować się nad nasłuchiwaniem.</p>
+            <!-- 3 -->
+            <li>Teraz będziemy wyświetlać w konsoli tylko przyciski, które są wymienione w naszym obiekcie.</li>
+            <div class="code_bg">
+                <button onclick='copy("js5")' style="display: block; margin-right: 20px;">Copy</button>
+<code id ="js5"><span class="attr">window</span>.<span class="mark-css">addEventListener</span>(<span class="str">"keydown"</span>, (<span class="attr">event</span>) => {
+    <span class="if">if</span> (<span class="var">inputKeys</span>.<span class="mark-css">hasOwnProperty</span>(<span class="attr">event</span>.<span class="mark">key</span>)) {
+        <span class="attr">console</span>.<span class="mark-css">log</span>(<span class="str">"Nacisnąłeś: "</span> + <span class="attr">event</span>.<span class="mark">key</span>);
+    }
+});</code>
+            </div>
+            <!-- 4 -->
+            <li>Sprawdzimy teraz które przyciski puszczamy.            </li>
+            <div class="code_bg">
+                <button onclick='copy("js6")' style="display: block; margin-right: 20px;">Copy</button>
+<code id ="js6"><span class="attr">window</span>.<span class="mark-css">addEventListener</span>(<span class="str">"keyup"</span>, (<span class="attr">event</span>) => {
+    <span class="if">if</span> (<span class="var">inputKeys</span>.<span class="mark-css">hasOwnProperty</span>(<span class="attr">event</span>.<span class="mark">key</span>)) {
+        <span class="attr">console</span>.<span class="mark-css">log</span>(<span class="str">"Puściłeś: "</span> + <span class="attr">event</span>.<span class="mark">key</span>);
+    }
+});</code>
+            </div>
+            <!-- 5 -->
+            <li>Oznaczymy teraz, które przyciski są aktualnie naciśnięte poprzez zmienienie wartości `false` na `true` w naszym obiekcie</li>
+            <div class="code_bg">
+                <button onclick='copy("js7")' style="display: block; margin-right: 20px;">Copy</button>
+<code id ="js7 "><span class="attr">window</span>.<span class="mark-css">addEventListener</span>(<span class="str">"keydown"</span>, (<span class="attr">event</span>) => {
+    <span class="if">if</span> (<span class="var">inputKeys</span>.<span class="mark-css">hasOwnProperty</span>(<span class="attr">event</span>.<span class="mark">key</span>)) {
+        <span class="attr">console</span>.<span class="mark-css">log</span>(<span class="str">"Nacisnąłeś: "</span> + <span class="attr">event</span>.<span class="mark">key</span>);
+        <span class="var">inputKeys</span>[<span class="attr">event</span>.<span class="mark">key</span>] = <span class="mark">true</span>;
+    }
+});</code>
+            </div>
+            <!-- 6 -->
+            <li>Gdy puścimy musimy ponownie ustawić wartość na `false`</li>
+            <div class="code_bg">
+                <button onclick='copy("js8")' style="display: block; margin-right: 20px;">Copy</button>
+<code id ="js8 "><span class="attr">window</span>.<span class="mark-css">addEventListener</span>(<span class="str">"keyup"</span>, (<span class="attr">event</span>) => {
+    <span class="if">if</span> (<span class="var">inputKeys</span>.<span class="mark-css">hasOwnProperty</span>(<span class="attr">event</span>.<span class="mark">key</span>)) {
+        <span class="attr">console</span>.<span class="mark-css">log</span>(<span class="str">"Puściłeś: "</span> + <span class="attr">event</span>.<span class="mark">key</span>);
+        <span class="var">inputKeys</span>[<span class="attr">event</span>.<span class="mark">key</span>] = <span class="mark">false</span>;
+    }
+});</code>
+            </div>
+            <!-- 7 -->
+            <li>Pobierzemy obrazek gracza aby móc nim poruszyć oraz ustalimy szybkość z jaką postać będzie się poruszać.</li>
+            <div class="code_bg">
+                <button onclick='copy("js9")' style="display: block; margin-right: 20px;">Copy</button>
+<code id ="js9"><span class="mark">const</span> <span class="var">playerImage</span> = <span class="attr">document</span>.<span class="mark-css">querySelector</span>(<span class="str">"player"</span>);
+<span class="mark">const</span> <span class="var">playerMoveSpeed</span> = <span class="val">2</span>;</code>
+            </div>
+            <!-- 8 -->
+            <li>Dodamy funkcję zajmującą się poruszaniem się naszej postaci</li>
+            <div class="code_bg">
+                <button onclick='copy("js10")' style="display: block; margin-right: 20px;">Copy</button>
+<code id="js10"><span class="mark">const</span> <span class="var"> handlePlayerMovement</span> = () => {
+<span class="if">if</span> (<span class="var">inputKeys</span>.<span class="attr">ArrowUp</span>) <span class="attr">playerImage</span>.<span class="attr">style</span>.<span class="attr">top</span> = `${<span class="attr">playerImage.</span><span class="attr">offsetTop</span> - <span class="attr">playerMoveSpeed</span>}px`;
+<span class="if">if</span> (<span class="var">inputKeys</span>.<span class="attr">ArrowRight</span>) <span class="attr">playerImage</span>.<span class="attr">style</span>.<span class="attr">left</span> = `${<span class="attr">playerImage.</span><span class="attr">offsetLeft</span> + <span class="attr">playerMoveSpeed</span>}px`;
+<span class="if">if</span> (<span class="var">inputKeys</span>.<span class="attr">ArrowDown</span>) <span class="attr">playerImage</span>.<span class="attr">style</span>.<span class="attr">top</span> = `${<span class="attr">playerImage.</span><span class="attr">offsetTop</span> + <span class="attr">playerMoveSpeed</span>}px`;
+<span class="if">if</span> (<span class="var">inputKeys</span>.<span class="attr">ArrowLeft</span>) <span class="attr">playerImage</span>.<span class="attr">style</span>.<span class="attr">left</span> = `${<span class="attr">playerImage.</span><span class="attr">offsetLeft</span> - <span class="attr">playerMoveSpeed</span>}px`;
+  };</code>
+            </div>  
+            <!-- 9 -->
+            <li>Będziemy ją wywoływać w nasłuchiwaniu naciśnięcia</li>
+            <div class="code_bg">
+                <button onclick='copy("js11")' style="display: block; margin-right: 20px;">Copy</button>
+<code id ="js11 "><span class="attr">window</span>.<span class="mark-css">addEventListener</span>(<span class="str">"keydown"</span>, (<span class="attr">event</span>) => {
+    <span class="if">if</span> (<span class="var">inputKeys</span>.<span class="mark-css">hasOwnProperty</span>(<span class="attr">event</span>.<span class="mark">key</span>)) {
+        <span class="comm">// Reszta kodu</span>
+        <span class="mark-css">handlePlayerMovement</span>();
+    }
+});</code>
+            </div>
+            <p>Możemy teraz poruszyć postacią na ekranie poprzez ciągłe klikanie.</p>
+            <!-- 10 -->
+            <li>
+                Aby poruszać się postacią trzymając przycisk musimy dodać pętlę gry <br>
+                Tworzymy funkcję gameLoop na <b>samym dole skryptu</b>. Dodajemy w niej wywołanie funkcji zajmującą się ruchem oraz tworzymy pętlę gry. Pod napisaną funkcją wywołujemy ją po raz pierwszy aby rozpocząć pętlę naszej gry.
+            </li>
+            <div class="code_bg">
+                <button onclick='copy("js12")' style="display: block; margin-right: 20px;">Copy</button>
+<code id ="js12 "><span class="mark">const</span> <span class="var">gameLoop</span> = () => {
+    <span class="mark-css">handlePlayerMovement</span>();
+    <span class="mark-css">requestAnimationFrame</span>(<span class="attr">gameLoop</span>);
+}</code>
+            </div>
+        </ol>
+        <h2>Krok 7. Poruszanie Postaci</h2>
+        <ol>
+            <!-- 1 -->
+            <li>Dodaj zmienną wskazującą, czy postać się porusza</li>
+            <div class="code_bg">
+                <button onclick='copy("js7.1")' style="display: block; margin-right: 20px;">Copy</button>
+                <code id ="js7.1 "><span class="mark">let</span> <span class="attr">isPlayerMoving</span> = <span class="mark">false</span>;</code>
+            </div>
+            <!-- 2 -->
+            <li>Utwórz tablicę przechowującą aktualnie wciśnięte przyciski</li>
+            <div class="code_bg">
+                <button onclick='copy("js7.2")' style="display: block; margin-right: 20px;">Copy</button>
+                <code id ="js7.2 "><span class="mark">let</span> <span class="attr">clickedButtons</span> = [];</code>
+            </div>
+            <!-- 3 -->
+            <li>Zdefiniuj tablicę z grafikami postaci skierowanej w cztery strony</li>
+            <div class="code_bg">
+                <button onclick='copy("js7.3")' style="display: block; margin-right: 20px;">Copy</button>
+                <code id ="js7.3 "><span class="mark">const</span> <span class="var">playerSprites</span> = [
+    <span class="str">"./images/playerUp.png"</span>,
+    <span class="str">"./images/playerRight.png"</span>,
+    <span class="str">"./images/playerDown.png"</span>,
+    <span class="str">"./images/playerLeft.png"</span>,
+];</code>
+            </div>  
+            <!-- 4 -->
+            <li>Sprawdź, czy wciśnięty przycisk już znajduje się w tablicy <i>clickedButtons</i>. Jeśli tak, pomiń dalsze akcje.</li>
+            <div class="code_bg">
+                <button onclick='copy("js7.4")' style="display: block; margin-right: 20px;">Copy</button>
+<code id="js7.4"><span class="attr">window</span>.<span class="mark-css">addEventListener</span>(<span class="str">"keydown"</span>, (<span class="attr">event</span>) => {
+    <span class="if">if</span> (<span class="var">clickedButtons</span>.<span class="mark-css">includes</span>(<span class="attr">event</span>.<span class="mark">key</span>)) <span class="mark">return</span>;
+    <span class="if">if</span> (<span class="var">inputKeys</span>.<span class="mark-css">hasOwnProperty</span>(<span class="attr">event</span>.<span class="mark">key</span>)) {
+        <span class="var">inputKeys</span>[<span class="attr">event</span>.<span class="mark">key</span>] = <span class="mark">true</span>;
+        <span class="var">clickedButtons</span>.<span class="mark-css">push</span>(<span class="attr">event</span>.<span class="mark">key</span>);
+        <span class="var">isPlayerMoving</span> = <span class="mark">true</span>;
+    }
+});</code>
+            </div>
+            <!-- 5 -->
+            <li>Po puszczeniu przycisku – ustaw jego wartość w inputKeys na false, usuń go z clickedButtons, a jeśli tablica jest pusta, zatrzymaj ruch:</li>
+            <div class="code_bg">
+                <button onclick='copy("js7.5")' style="display: block; margin-right: 20px;">Copy</button>
+<code id ="js7.5 "><span class="attr">window</span>.<span class="mark-css">addEventListener</span>(<span class="str">"keyup"</span>, (<span class="attr">event</span>) => {
+    <span class="if">if</span> (<span class="var">inputKeys</span>.<span class="mark-css">hasOwnProperty</span>(<span class="attr">event</span>.<span class="mark">key</span>)) {
+        <span class="var">inputKeys</span>[<span class="attr">event</span>.<span class="mark">key</span>] = <span class="mark">false</span>;
+        <span class="var">clickedButtons</span> = <span class="var">clickedButtons</span>.<span class="mark-css">filter</span>((<span class="var">key</span>) => <span class="var">key</span> !== <span class="attr">event</span>.<span class="mark">key</span>);
+        <span class="if">if</span> (<span class="var">clickedButtons</span>.<span class="mark-css">length</span> === <span class="val">0</span>) {
+            <span class="var">isPlayerMoving</span> = <span class="mark">false</span>;
+        }
+    }
+});</code>
+            </div>
+            <!-- 6 -->
+            <li>Zmiana kierunku patrzenia postaci <br>
+                Tworzymy funkcję updatePlayerDirection, która będzie zmieniała grafikę postaci w zależności od ostatnio wciśniętego klawisza <br>
+                Pobierz ostatni element z tablicy clickedButtons, aby określić kierunek ruchu. <br>
+                Ustaw domyślny obrazek postaci skierowanej w dół
+            </li>
+            <div class="code_bg">
+                <button onclick='copy("js7.6")' style="display: block; margin-right: 20px;">Copy</button>
+<code id ="js7.6 "><span class="mark">let</span> <span class="var">image</span> = <span class="attr">playerSprites</span>[<span class="val">2</span>];</code>
+            </div>
+            <!-- 7 -->
+            <li>Na podstawie ostatnio wciśniętego klawisza, zmień obrazek postaci na odpowiedni</li>
+            <div class="code_bg">
+                <button onclick='copy("js7.7")' style="display: block; margin-right: 20px;">Copy</button>
+<code id ="js7.7 "><span class="mark">const</span> <span class="var">updatePlayerDirection</span> = () => {
+    <span class="mark">let</span> <span class="var">lastClickedButton</span> = <span class="var">clickedButtons</span>[<span class="var">clickedButtons</span>.<span class="mark-css">length</span> - <span class="val">1</span>];
+    <span class="mark">let</span> <span class="var">image</span> = <span class="var">playerSprites</span>[<span class="val">2</span>];
+
+    <span class="if">switch</span> (<span class="var">lastClickedButton</span>) {
+        <span class="if">case</span> <span class="str">"ArrowUp"</span>:
+            <span class="var">image</span> = <span class="var">playerSprites</span>[<span class="val">0</span>];
+            <span class="if">break</span>;
+        <span class="if">case</span> <span class="str">"ArrowRight"</span>:
+            <span class="var">image</span> = <span class="var">playerSprites</span>[<span class="val">1</span>];
+            <span class="if">break</span>;
+        <span class="if">case</span> <span class="str">"ArrowDown"</span>:
+            <span class="var">image</span> = <span class="var">playerSprites</span>[<span class="val">2</span>];
+            <span class="if">break</span>;
+        <span class="if">case</span> <span class="str">"ArrowLeft"</span>:
+            <span class="var">image</span> = <span class="var">playerSprites</span>[<span class="val">3</span>];
+            <span class="if">break</span>;
+        <span class="if">default</span>:
+            <span class="if">break</span>;
+    }
+
+    <span class="var">playerImage</span>.<span class="attr">style</span>.<span class="attr">backgroundImage</span> = <span class="mark-css">`url(${image})`</span>;
+};</code>
+            </div>  
+            <!-- 8 -->
+            <li>Aktualizacja kierunku podczas ruchu. <br>
+            W funkcji handlePlayerMovement wywołujemy updatePlayerDirection, aby postać obracała się tylko wtedy, gdy się porusza. <br>
+            Sprawdź, czy postać jest w ruchu, korzystając ze zmiennej isPlayerMoving. <br>
+            Jeśli tak – wywołaj funkcję updatePlayerDirection</li>
+            <div class="code_bg">
+                <button onclick='copy("js7.8")' style="display: block; margin-right: 20px;">Copy</button>
+<code id ="js7.8 "><span class="mark">const</span> <span class="var">handlePlayerMovement</span> = () => {
+    <span class="comm">// Reszta kodu odpowiedzialna za ruch...</span>
+
+    <span class="if">if</span> (<span class="var">isPlayerMoving</span>) {
+        <span class="mark-css">updatePlayerDirection</span>();
+    }
+};</code>
+            </div>
+        </ol>
+
+        <h2>To już koniec naszego prostego projektu! Gratulacje – stworzyłeś postać, która potrafi się poruszać i obracać w zależności od kierunku ruchu.</h2>
+        <p>W przyszłości możesz dodać więcej funkcji, takich jak animacje, kolizje z przeszkodami czy interakcje z innymi obiektami w grze.</p>
+        <h3>Poniżej znajdziesz:</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr;">
+            <a href="https://najdz3l.github.io/Mushroom-Picker-Game/" id="mp" target="_blank">
+                <div>
+                    <img src="toadstool.png" style="max-height: 50px; max-width: 50px; margin: 8px auto;" alt="Ikona grzyba">
+                    <p>Bardziej zaawansowana wersja gry, która może być dla Ciebie inspiracją do dalszej nauki i rozwoju projektu.</p>
+                </div>
+            </a>
+            <!-- MARK: TUTEJ -->
+            <a href="#proj" id="proj" target="_blank">
+                <div>
+                    <img src="playerDown.png" style="max-height: 50px; max-width: 50px; margin: 8px auto;" alt="Ikona grzyba">
+                    <p>Podstronę z działającym kodem tego projektu, stworzonego krok po kroku zgodnie z poradnikiem.</p>
+                </div>
+            </a>
+        </div>
+<div style="text-align: center; margin: 48px auto; vertical-align: middle;">
+    <svg height="24px" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg" fill="#1877F2"><title>Facebook icon</title><path d="M23.9981 11.9991C23.9981 5.37216 18.626 0 11.9991 0C5.37216 0 0 5.37216 0 11.9991C0 17.9882 4.38789 22.9522 10.1242 23.8524V15.4676H7.07758V11.9991H10.1242V9.35553C10.1242 6.34826 11.9156 4.68714 14.6564 4.68714C15.9692 4.68714 17.3424 4.92149 17.3424 4.92149V7.87439H15.8294C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991H17.2018L16.6698 15.4676H13.8739V23.8524C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991Z"/></svg>
+    <a target="_blank" href="https://www.facebook.com/kryspin.nagler" style="text-decoration: none; color: #1664ca; font-size: 1.5em;">Kontakt do mnie</a>
+</div>
+</body>
+</html>
+
+<style>
+    * {
+        margin: 0 auto;
+        padding: 0;
+        font-size: 1.05em;
+    }
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        width: clamp(80%, 85%, 800px);
+        margin: auto;
+        text-align: justify;
+        background: #ccc;
+    }
+
+    h1 {
+        margin: 20px 0 24px;
+        font-size: 2em;
+    }
+
+    h2 {
+        margin: 48px 0 12px;
+        font-size: 1.75em;
+    }
+
+    h3 {
+        margin: 24px 0 12px;
+        font-size: 1.5em;
+    }
+
+    ul {
+        margin-left: 24px;
+        list-style: disc;
+        &.tics {
+            list-style: "✅";
+        }
+        li{
+            margin: 10px 0;
+            padding-left: 8px;
+        }
+    }
+
+    ol {
+        padding-left: 32px;
+        list-style: decimal;
+        >li{
+            font-size: 1.2em;
+            font-weight: 600;
+            margin: 16px 0 4px;
+            padding-left: 8px;
+        }
+    }
+
+    i {
+        font-size: 0.9em;
+        color: #343434;
+    }
+
+    .code_bg {
+        font-family: "Consolas", "Courier New", monospace;
+        background: #222;
+        color: #ccc;
+        padding: 20px 15px 15px 15px;
+        border: 2px solid #ddd;
+        border-radius: 15px;
+        display: block;
+        margin: 8px 0;
+        code, pre {
+            white-space: pre-wrap; /* Zachowuje formatowanie */
+        }
+    }
+
+    .mark {
+        color: #3f9cd6;
+    }
+
+    .attr {
+        color: #8cdcfe;
+    }
+
+    .var {
+        color: #48a8e8;
+    }
+
+    .str{
+        color: #c68c74;
+    }
+
+    .comm {
+        color: #6a9955;
+    }
+
+    .val {
+        color: #b5cea8;
+    }
+
+
+    .mark-css {
+        color: #d6b97c;
+    }
+
+    .if {
+        color: #cc75ef;
+    }
+
+    img {
+        display: block;
+        margin: auto;
+        width: clamp(200px, 100%, 100%);
+        max-width: 1200px;
+    }
+
+    button {
+        background: #ccc;
+        color: #222;
+        font-weight: 500;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #8cdcfe;
+        color: #fff;
+    }
+
+    button:focus {
+        outline: solid 2px #ccc;
+        background: #8cdcfe;
+    }
+
+    #mp, #proj {
+        text-decoration: none;
+        color: #222;
+        width: 85%;
+        padding: 5px 10px;
+        text-align: center;
+        border-radius: 15px;
+        background: #3f9cd6;
+    }
+
+</style>
